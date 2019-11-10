@@ -1,7 +1,14 @@
+Main();
+
 chrome.runtime.onMessage.addListener(_ => {
 	let words = document.body.innerText.split(" ");
 	words.forEach(word => makeTypo(word));
 });
+
+function Main () {
+    let words = document.body.innerText.split(" ");
+    words.forEach(word => makeTypo(word));
+}
 
 function getRandom(max) {
     return Math.floor((Math.random() * 10) % max)
