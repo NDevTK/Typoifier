@@ -1,9 +1,6 @@
 Main();
 
-chrome.runtime.onMessage.addListener(_ => {
-	let words = document.body.innerText.split(" ");
-	words.forEach(word => makeTypo(word));
-});
+chrome.runtime.onMessage.addListener(Main);
 
 function Main () {
     let words = document.body.innerText.split(" ");
