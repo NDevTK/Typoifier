@@ -1,4 +1,7 @@
-chrome.tabs.onActivated.addListener(activeInfo => {
-  activeTab = activeInfo.tabId; // Current tab
-  chrome.tabs.sendMessage(activeTab, true);
-});
+chrome.tabs.onUpdated.addListener(
+  function(tabId, changeInfo, tab) {
+    if (changeInfo.url) {
+      chrome.tabs.sendMessage(tabId, true);
+    }
+  }
+);
