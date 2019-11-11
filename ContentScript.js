@@ -17,6 +17,7 @@ function AtPos(str, position, newStr) {
 function TypoSTR(str) {
     let words = str.split(" ");
     words.forEach((word, index) => {
+        if(word.length === 0) return
         if (getRandom(2)) words[index] = Typo(word);
     })
     return words.join(" ");
