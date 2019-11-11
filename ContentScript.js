@@ -15,6 +15,7 @@ function AtPos(str, position, newStr) {
 }
 
 function TypoSTR(str) {
+    if(str.length === 0) return
     let words = str.split(" ");
     words.forEach((word, index) => {
         if(word.length === 0) return
