@@ -3,7 +3,7 @@ Main();
 chrome.runtime.onMessage.addListener(Main);
 
 function Main () {
-    ["a", "p", "h1","h2","h3","h4", "h5", "h6"].forEach(tag => Typoifier(tag));
+    ["span", "title", "a", "p", "h1","h2","h3","h4", "h5", "h6"].forEach(tag => Typoifier(tag));
 }
 
 function getRandom(max) {
