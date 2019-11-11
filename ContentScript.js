@@ -3,10 +3,7 @@ Main();
 chrome.runtime.onMessage.addListener(Main);
 
 function Main () {
-    temp = document.body.innerHTML;
-    let words = document.body.innerText.split(" ");
-    words.forEach(word => makeTypo(word+" "));
-    document.body.innerHTML = temp;
+    ["a", "p", "h1","h2","h3","h4", "h5", "h6"].forEach(tag => Typoifier(tag));
 }
 
 function getRandom(max) {
@@ -17,6 +14,14 @@ function AtPos(str, position, newStr) {
     return str.slice(0, position) + newStr + str.slice(position);
 }
 
+function TypoSTR(str) {
+    let words = str.split(" ");
+    words.forEach((word, index) => {
+        if (getRandom(2)) words[index] = Typo(word);
+    })
+    return words.join(" ");
+}
+
 function Typo(word) {
     let index = getRandom(word.length);
     let letter = word[index];
@@ -25,6 +30,8 @@ function Typo(word) {
     return newString;
 }
 
-function makeTypo(word) {
-temp = temp.replace(word, Typo(word));
+function Typoifier(tagName) {
+    document.querySelectorAll(tagName).forEach(e => {
+        e.innerText = TypoSTR(e.innerText);
+    });
 };
