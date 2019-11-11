@@ -35,6 +35,7 @@ function Typo(word) {
 function Typoifier(tagName) {
     document.querySelectorAll(tagName).forEach(e => {
 	if(e.innerText === "") return
+	if(e.childElementCount !== 0) return
         e.innerText = TypoSTR(e.innerText);
     });
 };
