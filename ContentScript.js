@@ -3,10 +3,10 @@ Main();
 chrome.runtime.onMessage.addListener(Main);
 
 function Main () {
-	temp = document.body.innerHTML;
+    temp = document.body.innerHTML;
     let words = document.body.innerText.split(" ");
     words.forEach(word => makeTypo(word+" "));
-	document.body.innerHTML = temp;
+    document.body.innerHTML = temp;
 }
 
 function getRandom(max) {
