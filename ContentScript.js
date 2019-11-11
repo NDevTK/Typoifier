@@ -21,7 +21,7 @@ function Typo(word) {
     let index = getRandom(word.length);
     let letter = word[index];
     let newString = AtPos(word, index, letter);
-    if(getRandom(1)) newString = AtPos(newString, index, letter);
+    if(getRandom(2)) newString = AtPos(newString, index, letter);
     return newString;
 }
 
