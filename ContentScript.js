@@ -3,8 +3,10 @@ Main();
 chrome.runtime.onMessage.addListener(Main);
 
 function Main () {
+	temp = document.body.innerHTML;
     let words = document.body.innerText.split(" ");
     words.forEach(word => makeTypo(word+" "));
+	document.body.innerHTML = temp;
 }
 
 function getRandom(max) {
@@ -24,5 +26,5 @@ function Typo(word) {
 }
 
 function makeTypo(word) {
-document.body.innerHTML = document.body.innerHTML.replace(word, Typo(word));
+temp = temp.replace(word, Typo(word));
 };
