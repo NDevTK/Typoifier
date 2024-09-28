@@ -15,21 +15,25 @@ function AtPos(str, position, newStr) {
 }
 
 function TypoSTR(str) {
-    if (str.length === 0) return
-    let words = str.split(" ");
-    words.forEach((word, index) => {
-        if (word.length === 0) return
-        if (getRandom(2)) words[index] = Typo(word);
-    })
-    return words.join(" ");
+  if (str.length === 0) return;
+  let words = str.split(' ');
+  words.forEach((word, index) => {
+    if (word.length === 0) return;
+    // For security links and email addresses wont get a typo
+    if (word.includes('://') || word.includes('@')) return;
+    if (getRandom(2)) words[index] = Typo(word);
+  });
+  return words.join(' ');
 }
 
 function Typo(word) {
-    let index = getRandom(word.length);
-    let letter = word[index];
-    let newString = AtPos(word, index, letter);
-    if (getRandom(2)) newString = AtPos(newString, index, letter);
-    return newString;
+  let index = getRandom(word.length);
+  let letter = word[index];
+  // If chosen is a number then ignore
+  if (!isNaN(letter)) return word;
+  let newString = AtPos(word, index, letter);
+  if (getRandom(2)) newString = AtPos(newString, index, letter);
+  return newString;
 }
 
 function Typoifier(tagName) {
