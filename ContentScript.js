@@ -6,8 +6,20 @@ function Main() {
     ["span", "title", "a", "p", "h1", "h2", "h3", "h4", "h5", "h6", "td"].forEach(tag => Typoifier(tag));
 }
 
+function getRandomIntInclusive(min, max) {
+  const randomBuffer = new Uint32Array(1);
+
+  window.crypto.getRandomValues(randomBuffer);
+
+  let randomNumber = randomBuffer[0] / (0xffffffff + 1);
+
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(randomNumber * (max - min + 1)) + min;
+}
+
 function getRandom(max) {
-    return Math.floor((Math.random() * 10) % max)
+  return getRandomIntInclusive(0, max - 1);
 }
 
 function AtPos(str, position, newStr) {
